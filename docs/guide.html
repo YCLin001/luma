@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>Luma 使用说明</title>
+<style>
+  @page { size: A4; margin: 16mm 15mm 18mm 15mm; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Microsoft YaHei", "PingFang SC", "Hiragino Sans GB", sans-serif;
+    font-size: 10pt;
+    line-height: 1.68;
+    color: #1c2230;
+    margin: 0;
+  }
+  h1 {
+    font-size: 26pt;
+    line-height: 1.25;
+    margin: 0 0 6pt 0;
+    letter-spacing: -0.5pt;
+  }
+  .sub {
+    font-size: 11pt;
+    color: #5b6478;
+    margin: 0 0 4pt 0;
+  }
+  .lead {
+    font-size: 10.5pt;
+    color: #333a48;
+    margin: 10pt 0 18pt 0;
+    padding: 10pt 12pt;
+    background: #f4f6fa;
+    border-left: 3pt solid #4a6ea8;
+    border-radius: 2pt;
+  }
+  h2 {
+    font-size: 14.5pt;
+    margin: 22pt 0 8pt 0;
+    padding-left: 9pt;
+    border-left: 4pt solid #4a6ea8;
+    break-after: avoid;
+  }
+  h3 {
+    font-size: 11.5pt;
+    margin: 14pt 0 4pt 0;
+    color: #232a38;
+    break-after: avoid;
+  }
+  p { margin: 5pt 0; }
+  ul, ol { margin: 6pt 0 6pt 0; padding-left: 18pt; }
+  li { margin: 3pt 0; }
+  strong { color: #12182a; }
+  code {
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 9.5pt;
+    background: #eef1f6;
+    padding: 1pt 4pt;
+    border-radius: 2pt;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8pt 0 12pt 0;
+    font-size: 9.5pt;
+    break-inside: avoid;
+  }
+  th, td {
+    border: 0.6pt solid #d5dbe6;
+    padding: 5pt 7pt;
+    text-align: left;
+    vertical-align: top;
+  }
+  th { background: #f2f5fa; font-weight: 600; }
+  img {
+    width: auto;
+    height: auto;
+    max-width: 76%;
+    max-height: 56mm;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 6pt;
+    border: 0.6pt solid #dfe4ec;
+    margin: 8pt 0 4pt 0;
+  }
+  .cap {
+    font-size: 8.5pt;
+    color: #78829a;
+    text-align: center;
+    margin: 0 0 10pt 0;
+  }
+  .qa {
+    margin: 4pt 0;
+    break-inside: avoid;
+  }
+  .qa .q { font-weight: 600; color: #12182a; }
+  .qa .a { color: #333a48; margin-top: 1pt; }
+  .tipbox {
+    margin-top: 14pt;
+    padding: 10pt 12pt;
+    background: #f7f4ee;
+    border: 0.6pt solid #e6ddcc;
+    border-radius: 3pt;
+    font-size: 9.8pt;
+    break-inside: avoid;
+  }
+  .toc {
+    margin: 4pt 0 16pt 0;
+    padding: 10pt 14pt;
+    border: 0.6pt solid #dfe4ec;
+    border-radius: 3pt;
+    font-size: 9.8pt;
+    color: #3a4356;
+    columns: 2;
+    column-gap: 20pt;
+  }
+  .toc div { margin: 2pt 0; }
+  .pb { break-before: page; }
+</style>
+</head>
+<body>
+
+<h1>Luma 使用说明</h1>
+<p class="sub">横屏信息面板 · 版本 0.1</p>
+
+<p class="lead">
+Luma 是一个横屏的「信息面板」。把手机横过来放，时间、天气、音乐、日程、通知和常用应用都在一屏里，不用来回切 App。<br />
+它不是桌面启动器——不会接管你的桌面，也不会替换 Home 键。按返回键或上滑，就正常回到系统桌面。
+</p>
+
+<div class="toc">
+  <div>1 · 第一次打开要做的事</div>
+  <div>2 · 界面分三块</div>
+  <div>3 · 五个常用操作</div>
+  <div>4 · 手势一览</div>
+  <div>5 · 常见问题</div>
+  </div>
+
+<img src="p-home.jpg" alt="主界面" />
+<p class="cap">主界面：左边信息卡、中间应用矩阵、右边蓝牙竖栏与 Dock</p>
+
+<h2>1 · 第一次打开要做的事</h2>
+
+<p>会弹两个授权，都建议给：</p>
+
+<table>
+  <tr><th style="width:16%">弹窗</th><th style="width:54%">给了之后能做什么</th><th>不给会怎样</th></tr>
+  <tr>
+    <td>定位</td>
+    <td>天气自动显示你所在的城市</td>
+    <td>天气显示「未定位」，需要手动选城市</td>
+  </tr>
+  <tr>
+    <td>日历</td>
+    <td>中间那张卡显示今天的日程</td>
+    <td>卡片显示「还没给日历权限」</td>
+  </tr>
+  <tr>
+    <td>蓝牙</td>
+    <td>右侧竖栏显示已连接的耳机 / 手表 / 电脑</td>
+    <td>竖栏不出现</td>
+  </tr>
+</table>
+
+<p>还有一个要手动开：<strong>通知使用权</strong>。在手机设置里搜「通知使用权」，找到 Luma 打开就行（不同品牌路径不一样，搜最快）。</p>
+
+<p>开了之后：左边通知卡才会有内容，音乐卡才能读到正在播放的歌和封面。</p>
+
+<p style="color:#5b6478">不给也能用，只是对应那块一直空着，不会报错。</p>
+
+<h2>2 · 界面分三块</h2>
+
+<h3>左边：信息区</h3>
+<p>上面一张卡是<strong>时钟、日期、天气、电量</strong>。天气会自己更新，显示实时天气。</p>
+<p>充电时这里会出现一个绿色闪电和「充电中 100%」，拔掉线就变成「电量 78%」。</p>
+<p>下面一张卡是<strong>三张卡片叠在一起</strong>，上下滑动切换：音乐、日历、通知。右下角那三个小点表示目前在第几张。</p>
+
+<h3>中间：主展示区</h3>
+<p>也是<strong>上下滑动切换</strong>，三页内容：应用九宫格、播放器、歌词。卡片外框不动，只换里面的内容。</p>
+
+<h3>右边：竖栏 + 停靠栏</h3>
+<p>最右边那条玻璃是<strong>蓝牙和设备状态</strong>：上面列着当前连着的耳机、手表、电脑，下面是网络状态和今天的日程摘要。</p>
+<p>再右边那一列图标是 <strong>Dock</strong>：5 个固定应用，加最下面一个 <code>⋯</code>。</p>
+
+<h2>3 · 五个常用操作</h2>
+
+<h3>① 换壁纸</h3>
+<p>点 Dock 最下面那个 <code>⋯</code> → 选「换壁纸（从相册选）」→ 挑一张图。想换回系统原来的壁纸，同一个菜单里选「用系统壁纸」。</p>
+
+<img src="p-menu.jpg" alt="Dock 菜单" />
+<p class="cap">点 Dock 底部的 ⋯ 打开设置菜单</p>
+
+<h3>② 换图标</h3>
+<p><strong>长按任意一个图标</strong>（九宫格里的、Dock 上的都行），会弹出一个应用列表，点谁就换成谁。选错了点右上角「恢复默认」。</p>
+
+<h3>③ 换 Dock 上的应用</h3>
+<p>跟换图标一样，长按 Dock 上的图标就行。</p>
+
+<h3>④ 清掉一条通知</h3>
+<p>通知卡上，<strong>从右往左滑</strong>那条通知，就清掉了——系统通知栏里那条也会一起消失。</p>
+
+<h3>⑤ 控制音乐</h3>
+<p>中间滑到播放器那页，或者用左边音乐卡上的按钮。上一首、播放暂停、下一首都能点。QQ 音乐、网易云、酷狗、Spotify、Apple Music 都支持——<strong>哪个在放就控制哪个</strong>。</p>
+
+<img src="p-player.jpg" alt="播放器" />
+<p class="cap">播放器大卡：封面、歌名、进度、控制按钮</p>
+
+<h2>4 · 手势一览</h2>
+
+<table>
+  <tr><th style="width:55%">想做的事</th><th>怎么做</th></tr>
+  <tr><td>切换左边卡片（音乐 / 日历 / 通知）</td><td>在左边卡片上<strong>上下滑</strong></td></tr>
+  <tr><td>切换中间内容（应用 / 播放器 / 歌词）</td><td>在中间卡片上<strong>上下滑</strong></td></tr>
+  <tr><td>打开一个应用</td><td><strong>点</strong>图标</td></tr>
+  <tr><td>换某个位置的图标</td><td><strong>长按</strong>那个图标</td></tr>
+  <tr><td>清掉一条通知</td><td>在通知上<strong>右滑</strong></td></tr>
+  <tr><td>换壁纸</td><td>点 Dock 的 <code>⋯</code></td></tr>
+  <tr><td>回到系统桌面</td><td>按<strong>返回</strong>键或<strong>上滑</strong></td></tr>
+</table>
+
+<h3>小提示</h3>
+
+<div class="tipbox">
+  <ul>
+    <li><strong>横着放更好看</strong>。竖屏也能开，但 Luma 是为横屏设计的。</li>
+    <li>把 Luma 加到桌面快捷方式，横过来点一下就能进。</li>
+    <li>首屏那 9 个格子、Dock 那 5 个位子都能换成常用的，换一次会一直记住。</li>
+    <li>升级新版本直接覆盖安装就行，壁纸、图标、Dock 配置都会保留。</li>
+  </ul>
+</div>
+
+<img src="p-lyrics.jpg" alt="歌词" />
+<p class="cap">歌词页：当前这句会变大加粗，跟着音乐走</p>
+
+<h2>5 · 常见问题</h2>
+
+<div class="qa">
+  <div class="q">Q：为什么歌词显示「这首歌没找到歌词」？</div>
+  <div class="a">歌词是按歌名去匹配的。中文歌命中率高，冷门歌、纯音乐、英文歌经常匹配不到。匹配不到就如实显示，不会随便塞一段假的。</div>
+</div>
+
+<div class="qa">
+  <div class="q">Q：为什么蓝牙设备后面没有电量？</div>
+  <div class="a">安卓系统本身不向普通应用开放蓝牙设备电量。只有设备主动报告电量时才显示，耳机和电脑都没报告，所以只显示名字。</div>
+</div>
+
+<div class="qa">
+  <div class="q">Q：为什么点开应用是全屏，不是小窗？</div>
+  <div class="a">系统级的「悬浮小窗」是手机厂商自己做的功能，没有对第三方应用开放，Luma 没法把别的 App 变成小窗。想要小窗，还是从系统的侧边栏或最近任务里开。</div>
+</div>
+
+<div class="qa">
+  <div class="q">Q：通知卡一直是空的？</div>
+  <div class="a">八成是没开通知使用权。在设置里搜「通知使用权」，找到 Luma 打开。</div>
+</div>
+
+<div class="qa">
+  <div class="q">Q：天气不准 / 城市不对？</div>
+  <div class="a">天气默认按定位自动识别城市。定位失败时（比如刚开机、室内没信号）卡片会写「未定位 · 菜单里选城市」，这时点 Dock 的 ⋯ →「更换城市」手动挑一个。选了手动城市就会一直用它，想换回自动就在同一个列表里选「自动定位（当前位置）」。</div>
+</div>
+
+<div class="qa">
+  <div class="q">Q：切回桌面后 Luma 还在跑吗？</div>
+  <div class="a">在。它会在后台待着，切回来立刻是原样。如果希望更省电，可以在系统设置里限制它的后台活动，代价是回来时数据要重新刷新一下。</div>
+</div>
+
+<div class="qa">
+  <div class="q">Q：怎么卸载？</div>
+  <div class="a">跟普通应用一样，长按图标卸载，或者「设置 → 应用管理 → Luma → 卸载」。</div>
+</div>
+
+</body>
+</html>
