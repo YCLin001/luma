@@ -122,14 +122,14 @@ app/src/main/java/com/luma/lite/
 **磨砂玻璃是分层的，不是真背景模糊**
 黑色 20% 打底 + 白色 14% 提亮 + 1px 线性渐变描边。真背景模糊（`RenderEffect` / haze）在 120Hz + 3.5 倍密度下代价很高，这里用分层近似，帧率稳。
 
-**音乐会话要打分，不能取第一个**
+**音乐会话打分，不简单取第一个**
 QQ音乐、网易云、Spotify、Apple Music 同时挂在后台时，`getActiveSessions` 返回的不止一个。按 `PLAYING > BUFFERING > PAUSED > STOPPED` 打分，同分再按 `lastPositionUpdateTime` 的新鲜度排序。
 
 **封面四级回退**
 `ALBUM_ART` → `ART` → `DISPLAY_ICON` → 三者的 `_URI` 走 `ContentResolver` → 最后兜底用媒体通知的大图（QQ 音乐就只给通知）。
 
 **播放控制走系统媒体键**
-`AudioManager.dispatchMediaKeyEvent`，不依赖具体 App 的接口，任何注册了 MediaSession 的播放器都吃这套。
+`AudioManager.dispatchMediaKeyEvent`，不依赖具体 App 的接口，任何注册了 MediaSession 的播放器都可用。
 
 **歌词**
 按「歌名 + 歌手」去匹配 LRC，解析后按播放位置高亮。播放位置用「上次读到的 position + 本地流逝时间」估算，避免每帧问系统。
@@ -158,15 +158,13 @@ adb shell cmd notification allow_listener com.luma.lite/com.luma.lite.LumaNotifS
 
 ## 已知限制
 
-- **蓝牙设备电量读不到**（大多数机型）。Android 没有对第三方开放的蓝牙电量 API，`BluetoothDevice.getBatteryLevel()` 是 `@SystemApi`；只能走 GATT 读标准 Battery Service（`0x180F` / `0x2A19`），而手表的私有 BLE 通道和 Windows 笔记本的经典蓝牙都不暴露它。代码留着，遇到开放 BAS 的设备会自动出百分比。
-- **歌词只有一个源**（网易云公开接口），冷门歌、英文歌可能匹配不到，匹配不到显示「这首歌没找到歌词」，不会编造。
-- **点击图标只能全屏打开**。ColorOS 的「浮窗」是窗口管理器层的虚拟屏 + 缩放（dump 里 `mode` 仍是 `fullscreen`，bounds 越界，带 `mPuttDisplayFlag` 私有字段），没有任何公开接口可以唤起；AOSP 的 freeform 在这台机器上也被 ROM 关闭了。代码里保留了 `tryFreeform()`，在真正支持 `FEATURE_FREEFORM_WINDOW_MANAGEMENT` 的设备上会自动走小窗，失败回落全屏。
-- **平板比例未在真实平板上验证**，目前只在手机上用 `wm size` 模拟过。
+- **蓝牙设备电量读不到**（大多数机型）。Android 没有对第三方开放的蓝牙电量 API，`BluetoothDevice.getBatteryLevel()` 是 `@SystemApi`；只能走 GATT 读标准 Battery Service（`0x180F` / `0x2A19`），而手表的私有 BLE 通道和 Windows 笔记本的经典蓝牙都不暴露它。代码仍保留，遇到开放 BAS 的设备会自动出百分比。
+- **歌词只有一个源**（网易云公开接口），冷门歌、小语种歌可能匹配不到，匹配不到显示「这首歌没找到歌词」，不会编造。
+- **点击图标只能全屏打开**。测试机型为OPPO系手机，系统ColorOS 的「浮窗」是窗口管理器层的虚拟屏 + 缩放（dump 里 `mode` 仍是 `fullscreen`，bounds 越界，带 `mPuttDisplayFlag` 私有字段），没有任何公开接口可以唤起；AOSP 的 freeform 在这台机器上也被 ROM 关闭了。代码里保留了 `tryFreeform()`，在真正支持 `FEATURE_FREEFORM_WINDOW_MANAGEMENT` 的设备上会自动走小窗，失败回落全屏。
+- **平板比例未在真实平板上验证**，目前只在手机上用 `wm size` 模拟过，兼容性存疑。
 
 ---
 
 ## 版本
 
 - `0.1` — 首个可安装版本：三区布局、堆叠卡、中间三页、Dock、蓝牙竖栏、自定义壁纸与图标、通知右滑清除。
-
-released APK 用 debug keystore 签名，可以直接侧装；上架需要换正式签名。
