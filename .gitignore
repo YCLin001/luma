@@ -22,3 +22,6 @@ local.properties.bak
 # 系统文件
 .DS_Store
 Thumbs.db
+
+# Windows 保留设备名（误创建的控制台节点，无法删除，忽略即可）
+CON
