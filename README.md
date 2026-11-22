@@ -4,6 +4,12 @@
 
 不是桌面启动器，不接管 HOME 键，退出后回到系统桌面。
 
+## 下载
+
+安装包在 [Releases](https://github.com/YCLin001/luma/releases/latest) 页面，下载 `Luma-0.1.apk` 直接安装即可，要求 **Android 12（API 31）及以上**。
+
+> 安装包用 debug keystore 签名，适合个人侧装；上架应用商店需要换正式签名。
+
 ![主界面](docs/screenshot-home.png)
 
 <table>
