@@ -82,12 +82,6 @@ tools/luma/build.sh
 tools/luma/build-release.sh
 ```
 
-产物：
-
-```
-app/build/outputs/apk/debug/app-debug.apk
-app/build/outputs/apk/release/app-release.apk
-```
 
 **国内网络注意**：`settings.gradle.kts` 里只保留了阿里云镜像（`maven.aliyun.com` 的 google / public / gradle-plugin），因为 `dl.google.com` 直连会超时。如果镜像缺包，构建会直接报错而不是卡住，方便定位。
 
